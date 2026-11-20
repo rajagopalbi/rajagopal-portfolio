@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Data Engineering &amp; Automation Architectures | RAJAGOPAL.DEV</title>
+  <meta name="description" content="Architectural deep-dives by Rajagopal Mandadi: Enterprise Power BI & Vega-Lite reporting, automated market-intelligence pipelines, and operational telemetry & fleet analytics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="projects-page">
+  <div class="page">
+    <header class="site-header" id="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html">RAJAGOPAL<span>.DEV</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">Home</a>
+          <a href="projects.html" class="active">Projects</a>
+          <a href="index.html#expertise">Expertise</a>
+          <a href="index.html#credentials">Certifications</a>
+          <button class="btn btn-amber btn-sm" data-open-modal>Book a Consultation</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <span class="kicker" style="font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cyan); display: block; margin-bottom: 12px;">Projects</span>
+          <h1>Data Engineering &amp; Automation <span class="accent">Architectures</span></h1>
+          <p class="lede">Three systems, one pattern: reliable data in, clear decisions out — with as little manual work as possible in between. Each breakdown covers the challenge, the architecture, and the impact.</p>
+        </div>
+      </section>
+
+      <!-- Project 1 -->
+      <section class="project-deep">
+        <div class="container">
+          <div class="project-deep-grid">
+            <div class="reveal">
+              <span class="project-kicker">Project 01 · Power BI</span>
+              <h2>Enterprise Power BI &amp; Custom Vega-Lite Reporting Ecosystem</h2>
+              <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;">
+                <span class="pill">Power BI</span><span class="pill">Deneb</span><span class="pill">Vega-Lite</span><span class="pill">DAX</span><span class="pill">SVG</span><span class="pill">PBIP</span>
+              </div>
+              <h4>Challenge</h4>
+              <p>Standard visuals could not express what executives actually needed to see: KPI matrices, trends, and exceptions in one glance, kept consistent across many reports and refreshed reliably.</p>
+              <h4>Data Model &amp; SVG / Deneb Architecture</h4>
+              <ul class="bullets">
+                <li>Dimensional models in Power BI with version-controlled PBIP enterprise models.</li>
+                <li>Advanced DAX measures and Power Query M for clean, reusable business logic.</li>
+                <li>Deneb / Vega-Lite custom visuals and dynamic SVG matrix KPIs for visuals the out-of-the-box set cannot do.</li>
+                <li>Row-level security so each audience sees only the data meant for them.</li>
+              </ul>
+              <h4>Business Impact</h4>
+              <p>Executive-ready reporting that leaders can read in seconds, built on one governed model instead of scattered one-off reports — the same approach behind the Serviceability ROI, Customer QBR, and RUSS dashboards built for Cisco at Zensar.</p>
+            </div>
+            <div class="project-visual reveal reveal-delay-1">
+              <span class="pill cyan">Architecture</span>
+              <div class="arch-diagram"><b>Sources</b>  SQL Server · Azure SQL · Snowflake · Oracle
+        ↓  Power Query M / pipelines
+<b>Model</b>   Dimensional model · DAX measures · RLS
+        ↓  PBIP (version-controlled)
+<b>Visuals</b> Deneb / Vega-Lite · Dynamic SVG KPIs
+        ↓
+<b>Users</b>   Executives · Business teams · Weekly reviews</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project 2 -->
+      <section class="project-deep">
+        <div class="container">
+          <div class="project-deep-grid flip">
+            <div class="reveal">
+              <span class="project-kicker">Project 02 · Automation</span>
+              <h2>Automated Market Intelligence &amp; Intraday Screening Pipeline</h2>
+              <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;">
+                <span class="pill">Apps Script</span><span class="pill">REST APIs</span><span class="pill">Automated Risk Rules</span><span class="pill">Scheduling</span>
+              </div>
+              <h4>Scheduled Data Ingestion</h4>
+              <p>Market data is pulled on a schedule through REST APIs and Google Apps Script pipelines — no manual downloads, no stale spreadsheets.</p>
+              <h4>Catalyst Filtering</h4>
+              <ul class="bullets">
+                <li>Screening rules filter the full market down to names with a real catalyst.</li>
+                <li>Automated risk rules flag what does not meet the criteria before it reaches a human.</li>
+                <li>Results are stored in a structured form, ready for review and audit.</li>
+              </ul>
+              <h4>Automated Reporting</h4>
+              <p>Screening output is reported automatically on schedule, so the review starts from a short, qualified list instead of a raw market dump.</p>
+            </div>
+            <div class="project-visual reveal reveal-delay-1">
+              <span class="pill amber">Architecture</span>
+              <div class="arch-diagram"><b>Ingest</b>   REST APIs · Scheduled Apps Script
+        ↓
+<b>Filter</b>  Catalyst screening · Risk rules
+        ↓
+<b>Store</b>   Structured results · Audit trail
+        ↓
+<b>Report</b>  Automated scheduled reporting</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project 3 -->
+      <section class="project-deep">
+        <div class="container">
+          <div class="project-deep-grid">
+            <div class="reveal">
+              <span class="project-kicker">Project 03 · Telemetry &amp; Fleet</span>
+              <h2>Operational Telemetry &amp; Field Fleet Analytics Platform</h2>
+              <div style="display:flex; flex-wrap:wrap; gap:7px; margin-top:16px;">
+                <span class="pill">Power BI</span><span class="pill">Power Apps</span><span class="pill">Power Automate</span><span class="pill">Telemetry</span>
+              </div>
+              <h4>Equipment &amp; Battery Lifecycle Tracking</h4>
+              <p>Equipment and battery lifecycle data is tracked end to end — what is in the field, how it is performing, and when it needs attention — instead of living in disconnected logs.</p>
+              <h4>Diagnostic Dashboards</h4>
+              <ul class="bullets">
+                <li>Diagnostic dashboards surface faults and trends early, before they become downtime.</li>
+                <li>Clear views by equipment, site, and time, built for field and operations teams.</li>
+              </ul>
+              <h4>Power Platform Integration</h4>
+              <p>Power Apps for field input and Power Automate cloud flows for alerts and governance workflows tie the telemetry back into day-to-day operations.</p>
+            </div>
+            <div class="project-visual reveal reveal-delay-1">
+              <span class="pill cyan">Architecture</span>
+              <div class="arch-diagram"><b>Field</b>    Equipment · Battery telemetry
+        ↓  Power Apps (field input)
+<b>Flow</b>    Power Automate · Alerts · Governance
+        ↓
+<b>Analyse</b> Power BI diagnostic dashboards
+        ↓
+<b>Act</b>     Maintenance · Lifecycle decisions</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section style="padding-top: 48px;">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker">Next step</span>
+            <h2>Want this for your data?</h2>
+            <p>Book a consultation and we can talk through your reporting, data model, or automation — and what the first version could look like.</p>
+            <div style="margin-top: 24px;"><button class="btn btn-amber" data-open-modal>Book a Consultation</button></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="brand" href="index.html">RAJAGOPAL<span>.DEV</span></a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="index.html#expertise">Expertise</a>
+          <a href="index.html#credentials">Certifications</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/rajagopal-mandadi-b0b1101a1/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/rajagopalbi" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+          <a href="tel:+918147523717" aria-label="Phone">☎</a>
+        </div>
+        <p class="copyright">© <span id="year">2026</span> Rajagopal Mandadi · Bengaluru, India · Specialist Data Engineer, LTIMindtree</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Book a Consultation modal -->
+  <div class="modal" id="consult-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+      <h3 id="modal-title">Book a Consultation</h3>
+      <p>Want to talk data, dashboards, or automation? Reach out directly — no forms, no waiting.</p>
+      <div class="modal-links">
+        <a href="https://www.linkedin.com/in/rajagopal-mandadi-b0b1101a1/" target="_blank" rel="noopener">LinkedIn <small>linkedin.com/in/rajagopal-mandadi-b0b1101a1</small></a>
+        <a href="tel:+918147523717">Phone <small>+91 81475 23717</small></a>
+        <a href="https://github.com/rajagopalbi" target="_blank" rel="noopener">GitHub <small>github.com/rajagopalbi</small></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

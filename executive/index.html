@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajagopal Mandadi — Transforming Complex Data into Executive Decisions | RAJAGOPAL.DEV</title>
+  <meta name="description" content="Rajagopal Mandadi — Power BI Developer, Azure Data Engineer & Power Platform Architect building high-impact analytics and automated intelligence pipelines. Specialist Data Engineer at LTIMindtree.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Scroll-driven image sequence, fixed behind all content -->
+  <canvas id="scroll-canvas" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Minimal loading indicator until initial frames are ready (or fallback confirmed) -->
+  <div id="loader" role="status" aria-live="polite">
+    <div>RAJAGOPAL.DEV</div>
+    <div class="bar"><span></span></div>
+    <div id="loader-text">Loading sequence…</div>
+  </div>
+
+  <div class="page">
+    <header class="site-header" id="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html">RAJAGOPAL<span>.DEV</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#credentials">Certifications</a>
+          <button class="btn btn-amber btn-sm" data-open-modal>Book a Consultation</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 1. Hero -->
+      <section class="hero" id="home">
+        <div class="container">
+          <div class="hero-inner">
+            <span class="eyebrow">Microsoft Certified: Fabric Data Engineer (DP-700)</span>
+            <h1>Transforming Complex Data into <span class="accent">Executive Decisions.</span></h1>
+            <p class="lede">Power BI Developer, Azure Data Engineer, &amp; Power Platform Architect building high-impact analytics and automated intelligence pipelines.</p>
+            <div class="hero-ctas">
+              <a class="btn btn-amber" href="projects.html">Explore Projects →</a>
+              <a class="btn btn-ghost" href="#expertise">View Tech Stack</a>
+            </div>
+            <div class="hero-meta">
+              <div class="stat"><b>5+ years</b><span>Data &amp; BI experience</span></div>
+              <div class="stat"><b>LTIMindtree</b><span>Specialist Data Engineer</span></div>
+              <div class="stat"><b>Bengaluru</b><span>India · Hybrid</span></div>
+            </div>
+            <div class="scroll-hint">Scroll — the story unfolds</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Core Expertise -->
+      <section id="expertise">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker">Core Expertise</span>
+            <h2>What I build, end to end.</h2>
+            <p>From the data model to the boardroom dashboard — and the automation that keeps it running without manual effort.</p>
+          </div>
+          <div class="expertise-grid">
+            <article class="expertise-card reveal">
+              <span class="num">01 / BI</span>
+              <h3>Power BI &amp; Custom Visuals</h3>
+              <p>Advanced DAX, Power Query M, Deneb/Vega-Lite custom visuals, dynamic SVG matrix KPIs, and PBIP version-controlled enterprise models.</p>
+              <div class="tags"><span class="pill amber">DAX</span><span class="pill">Deneb</span><span class="pill">Vega-Lite</span><span class="pill">PBIP</span></div>
+            </article>
+            <article class="expertise-card reveal reveal-delay-1">
+              <span class="num">02 / DATA</span>
+              <h3>Cloud Data Engineering</h3>
+              <p>Microsoft Fabric, Azure Data Engineering, Snowflake, PostgreSQL, Oracle 23ai, and dimensional lakehouse modeling.</p>
+              <div class="tags"><span class="pill cyan">Fabric</span><span class="pill">Azure</span><span class="pill">Snowflake</span><span class="pill">SQL</span></div>
+            </article>
+            <article class="expertise-card reveal reveal-delay-2">
+              <span class="num">03 / PLATFORM</span>
+              <h3>Enterprise Power Platform</h3>
+              <p>Custom Power Apps solutions, Power Automate cloud flows, and automated governance workflows.</p>
+              <div class="tags"><span class="pill">Power Apps</span><span class="pill">Power Automate</span><span class="pill">Governance</span></div>
+            </article>
+            <article class="expertise-card reveal reveal-delay-3">
+              <span class="num">04 / AI</span>
+              <h3>AI &amp; Workflow Automation</h3>
+              <p>Locally hosted n8n orchestration, Google Apps Script pipelines, LLM-driven data extraction, and automated reporting systems.</p>
+              <div class="tags"><span class="pill amber">n8n</span><span class="pill">Apps Script</span><span class="pill">LLM</span><span class="pill">Automation</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Featured Case Studies Preview -->
+      <section id="cases">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker">Featured Case Studies</span>
+            <h2>Work that runs the business.</h2>
+            <p>A preview of the architectures — the full breakdowns are on the Projects page.</p>
+          </div>
+          <div class="case-grid">
+            <article class="case-card reveal">
+              <span class="case-index">CASE 01</span>
+              <h3>Executive Financial &amp; KPI BI Suite</h3>
+              <p>An executive-ready reporting suite with custom visuals and dynamic KPIs, built for leaders who need the answer — not another report.</p>
+              <div class="stack"><span class="pill">Power BI</span><span class="pill">Deneb/Vega-Lite</span><span class="pill">DAX</span><span class="pill">SVG</span></div>
+              <div class="case-highlights"><span>Executive-ready</span><span>·</span><span>Custom visuals</span></div>
+              <a class="inspect-link" href="projects.html">Inspect Architecture <span class="arrow">→</span></a>
+            </article>
+            <article class="case-card reveal reveal-delay-1">
+              <span class="case-index">CASE 02</span>
+              <h3>Automated NSE Intraday Catalyst &amp; Screening Engine</h3>
+              <p>A scheduled, rules-driven screening pipeline that watches the market, filters for catalysts, and reports on its own.</p>
+              <div class="stack"><span class="pill">Apps Script</span><span class="pill">REST APIs</span><span class="pill">Automated Risk Rules</span></div>
+              <div class="case-highlights"><span>Automated</span><span>·</span><span>Scheduled</span></div>
+              <a class="inspect-link" href="projects.html">Inspect Architecture <span class="arrow">→</span></a>
+            </article>
+            <article class="case-card reveal reveal-delay-2">
+              <span class="case-index">CASE 03</span>
+              <h3>End-to-End AI Media &amp; Content Automation Pipeline</h3>
+              <p>From raw media to finished content, automated end to end — transcription, processing, and publishing, orchestrated in one flow.</p>
+              <div class="stack"><span class="pill">AI Studio</span><span class="pill">Whisper</span><span class="pill">FFmpeg</span><span class="pill">n8n</span></div>
+              <div class="case-highlights"><span>End-to-end</span><span>·</span><span>AI-driven</span></div>
+              <a class="inspect-link" href="projects.html">Inspect Architecture <span class="arrow">→</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Credentials & Delivery Impact -->
+      <section id="credentials">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="kicker">Credentials &amp; Delivery Impact</span>
+            <h2>Certified. Delivered. Trusted.</h2>
+          </div>
+          <div class="credentials-strip">
+            <div class="credential reveal">
+              <span class="cred-mark">CERTIFICATION</span>
+              <h3>Microsoft Certified: Fabric Data Engineer Associate (DP-700)</h3>
+              <p>Microsoft Fabric data engineering — lakehouses, pipelines, and analytics at enterprise scale.</p>
+            </div>
+            <div class="credential reveal reveal-delay-1">
+              <span class="cred-mark">CERTIFICATION</span>
+              <h3>Enterprise SQL &amp; Data Warehousing Certified</h3>
+              <p>Deep SQL and data warehousing practice across SQL Server, Azure SQL, Snowflake, and Oracle.</p>
+            </div>
+            <div class="credential reveal reveal-delay-2">
+              <span class="cred-mark">SPECIALIST</span>
+              <h3>Power BI • SQL • Fabric • Power Platform Specialist</h3>
+              <p>Specialist Data Engineer at LTIMindtree, previously Senior Software Engineer at Zensar for Cisco — Serviceability ROI, Customer QBR, and RUSS dashboards.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 5. Footer — last element, no dead scroll after it -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="brand" href="index.html">RAJAGOPAL<span>.DEV</span></a>
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#credentials">Certifications</a>
+        </nav>
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/rajagopal-mandadi-b0b1101a1/" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a href="https://github.com/rajagopalbi" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+          <a href="tel:+918147523717" aria-label="Phone">☎</a>
+        </div>
+        <p class="copyright">© <span id="year">2026</span> Rajagopal Mandadi · Bengaluru, India · Specialist Data Engineer, LTIMindtree</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Book a Consultation modal -->
+  <div class="modal" id="consult-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="modal-close" data-close-modal aria-label="Close">✕</button>
+      <h3 id="modal-title">Book a Consultation</h3>
+      <p>Want to talk data, dashboards, or automation? Reach out directly — no forms, no waiting.</p>
+      <div class="modal-links">
+        <a href="https://www.linkedin.com/in/rajagopal-mandadi-b0b1101a1/" target="_blank" rel="noopener">LinkedIn <small>linkedin.com/in/rajagopal-mandadi-b0b1101a1</small></a>
+        <a href="tel:+918147523717">Phone <small>+91 81475 23717</small></a>
+        <a href="https://github.com/rajagopalbi" target="_blank" rel="noopener">GitHub <small>github.com/rajagopalbi</small></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
