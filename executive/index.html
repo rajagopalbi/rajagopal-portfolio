@@ -39,33 +39,73 @@
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
         <div class="nav-links" id="nav-links">
           <a href="index.html" class="active">Home</a>
+          <a href="#about">About</a>
           <a href="projects.html">Projects</a>
-          <a href="#expertise">Expertise</a>
-          <a href="#credentials">Certifications</a>
-          <button class="btn btn-amber btn-sm" data-open-modal>Book a Consultation</button>
+          <a href="#workflow">Workflow</a>
+          <a href="#contact">Contact</a>
+          <button class="btn-touch" data-open-modal>Get in touch <span class="touch-arrow">&rarr;</span></button>
         </div>
       </nav>
     </header>
 
     <main>
-      <!-- 1. Hero -->
-      <section class="hero" id="home">
-        <div class="container">
-          <div class="hero-inner">
-            <span class="eyebrow">Microsoft Certified: Fabric Data Engineer (DP-700)</span>
-            <h1>Transforming Complex Data into <span class="accent">Executive Decisions.</span></h1>
-            <p class="lede">Power BI Developer, Azure Data Engineer, &amp; Power Platform Architect building high-impact analytics and automated intelligence pipelines.</p>
-            <div class="hero-ctas">
-              <a class="btn btn-amber" href="projects.html">Explore Projects →</a>
-              <a class="btn btn-ghost" href="#expertise">View Tech Stack</a>
+      <!-- 1. Hero — Folioblox style: large central portrait, huge
+           headline overlapping the photo, red-to-violet lighting. -->
+      <section class="hero folio-hero" id="home">
+        <div class="folio-bg" aria-hidden="true">
+          <img class="folio-portrait" id="folio-portrait" src="photo.jpg" alt="">
+          <div class="folio-grad"></div>
+        </div>
+        <div class="container folio-content">
+          <div class="folio-top">
+            <div class="folio-left">
+              <span class="eyebrow">Microsoft Certified: Fabric Data Engineer (DP-700)</span>
+              <h1 class="folio-headline"><span class="word">Specialist</span><br><span class="word">Data Engineer</span></h1>
             </div>
-            <div class="hero-meta">
-              <div class="stat"><b>5+ years</b><span>Data &amp; BI experience</span></div>
-              <div class="stat"><b>LTIMindtree</b><span>Specialist Data Engineer</span></div>
-              <div class="stat"><b>Bengaluru</b><span>India · Hybrid</span></div>
+            <div class="folio-right reveal">
+              <p class="folio-tagline">Great data should feel <em>invisible.</em></p>
+              <p class="folio-sub">From raw data to decisions, I build dashboards and pipelines that connect and convert.</p>
             </div>
-            <div class="scroll-hint">Scroll — the story unfolds</div>
           </div>
+          <div class="folio-ctas">
+            <a class="btn btn-amber" href="projects.html">Explore Projects &rarr;</a>
+            <a class="btn btn-ghost" href="#expertise">View Tech Stack</a>
+          </div>
+          <div class="folio-services">
+            <span><b class="num-amber">#01</b> Power BI &amp; Dashboards</span>
+            <span><b class="num-amber">#02</b> DAX &amp; Data Modelling</span>
+            <span><b class="num-amber">#03</b> Snowflake &amp; SQL</span>
+            <span><b class="num-amber">#04</b> Automation &amp; Power Platform</span>
+          </div>
+          <div class="folio-trusted">
+            <span class="trusted-label">Trusted by teams I&rsquo;ve worked with</span>
+            <span class="trusted-names"><b>LTIMindtree</b><i>&middot;</i><b>Cisco</b> <small>(via Zensar)</small><i>&middot;</i><b>Zensar</b></span>
+          </div>
+          <div class="scroll-hint">Scroll &mdash; the story unfolds</div>
+        </div>
+      </section>
+
+      <!-- 1b. Workflow — Folioblox style: huge headline, right paragraph,
+           floating step pills that stagger in on scroll. -->
+      <section class="workflow" id="workflow">
+        <div class="container">
+          <div id="about" class="about-strip reveal">
+            <span class="kicker">About</span>
+            <p>Specialist Data Engineer at LTIMindtree, previously Senior Software Engineer at Zensar for Cisco. Power BI developer with more than five years in IT, working with data from SQL Server, Azure SQL, Snowflake and Oracle.</p>
+          </div>
+          <div class="workflow-grid">
+            <h2 class="workflow-headline reveal">A focused workflow from data to dashboard.</h2>
+            <p class="workflow-copy reveal reveal-delay-1">Every dashboard starts with the business question and the source data — not the chart. I model the data, write the DAX and Power Query behind it, design the report, then check the numbers and row-level security before it goes out. The work is reviewed with business users in weekly calls, and changes they ask for are taken up and delivered.</p>
+          </div>
+          <div class="flow-pills" aria-label="Workflow steps">
+            <span class="flow-pill reveal"><i class="dot"></i>Requirements &amp; data discovery <b>Step 1</b></span>
+            <span class="flow-pill reveal reveal-delay-1"><i class="dot"></i>Data modelling <b>Step 2</b></span>
+            <span class="flow-pill reveal reveal-delay-2"><i class="dot"></i>DAX &amp; Power Query <b>Step 3</b></span>
+            <span class="flow-pill reveal reveal-delay-1"><i class="dot"></i>Dashboard design <b>Step 4</b></span>
+            <span class="flow-pill reveal reveal-delay-2"><i class="dot"></i>Testing &amp; row-level security <b>Step 5</b></span>
+            <span class="flow-pill reveal reveal-delay-3"><i class="dot"></i>Delivery &amp; review <b>Step 6</b></span>
+          </div>
+          <p class="workflow-close reveal"><span class="orange-dot"></span>A structured workflow helped turn raw source data into polished, executive-ready dashboards with a clear narrative and detailed, tested numbers.</p>
         </div>
       </section>
 
@@ -172,7 +212,7 @@
     </main>
 
     <!-- 5. Footer — last element, no dead scroll after it -->
-    <footer class="site-footer">
+    <footer class="site-footer" id="contact">
       <div class="footer-inner">
         <a class="brand" href="index.html">RAJAGOPAL<span>.DEV</span></a>
         <nav class="footer-nav" aria-label="Footer navigation">

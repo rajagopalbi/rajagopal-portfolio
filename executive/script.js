@@ -105,6 +105,27 @@
     requestAnimationFrame(bgTick);
   }
 
+
+  /* ---------- Folioblox hero portrait parallax ----------
+     The central portrait drifts down slightly and scales a touch
+     as you scroll, for a cinematic turn. Kept subtle; skipped
+     under prefers-reduced-motion. */
+  var folioPortrait = document.getElementById("folio-portrait");
+  if (folioPortrait && !reduceMotion) {
+    var folioTicking = false;
+    function folioParallax() {
+      folioTicking = false;
+      var y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        folioPortrait.style.transform =
+          "translateX(-50%) translateY(" + (y * 0.12).toFixed(1) + "px) scale(" + (1 + Math.min(y / window.innerHeight, 1) * 0.05).toFixed(3) + ")";
+      }
+    }
+    window.addEventListener("scroll", function () {
+      if (!folioTicking) { folioTicking = true; requestAnimationFrame(folioParallax); }
+    }, { passive: true });
+  }
+
   /* ---------- Scroll canvas engine (index.html only) ---------- */
   var canvas = document.getElementById("scroll-canvas");
   if (!canvas) return; // projects.html: no canvas, the rest above is enough.
