@@ -88,4 +88,61 @@
     });
   }, { rootMargin: "-40% 0px -55% 0px" });
   sections.forEach(function (s) { navObserver.observe(s); });
+
+
+  // --- Cinematic upgrade ---
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finePointer = window.matchMedia("(pointer: fine)").matches;
+
+  // Scroll progress bar + nav shadow
+  var progress = document.getElementById("scrollProgress");
+  var nav = document.querySelector(".nav");
+  function onScroll() {
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - doc.clientHeight;
+    if (progress && max > 0) progress.style.width = (doc.scrollTop / max * 100) + "%";
+    if (nav) nav.classList.toggle("scrolled", doc.scrollTop > 24);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Hero parallax: orbs / grid drift with scroll, hero content fades slightly
+  var hero = document.getElementById("hero");
+  var heroBg = document.querySelector(".hero-bg");
+  if (hero && heroBg && !reduceMotion) {
+    window.addEventListener("scroll", function () {
+      var y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        heroBg.style.transform = "translateY(" + y * 0.25 + "px)";
+        heroBg.style.opacity = String(Math.max(0.25, 1 - y / (window.innerHeight * 1.1)));
+      }
+    }, { passive: true });
+  }
+
+  // 3D tilt on mouse move (hero photo + project cards), desktop only
+  function addTilt(el, maxDeg) {
+    el.addEventListener("mousemove", function (e) {
+      var r = el.getBoundingClientRect();
+      var rx = ((e.clientY - r.top) / r.height - 0.5) * -maxDeg;
+      var ry = ((e.clientX - r.left) / r.width - 0.5) * maxDeg;
+      el.style.transform = "perspective(900px) rotateX(" + rx.toFixed(2) + "deg) rotateY(" + ry.toFixed(2) + "deg)" + (el.classList.contains("card") ? " translateY(-8px)" : "");
+    });
+    el.addEventListener("mouseleave", function () { el.style.transform = ""; });
+  }
+  if (!reduceMotion && finePointer) {
+    document.querySelectorAll("[data-tilt]").forEach(function (el) {
+      addTilt(el, el.classList.contains("card") ? 7 : 10);
+    });
+  }
+
+  // Section headings: underline reveal when their container is in view
+  document.querySelectorAll(".section-title").forEach(function (h) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { h.classList.add("visible"); obs.disconnect(); }
+      });
+    }, { threshold: 0.6 });
+    obs.observe(h);
+  });
+
 })();
