@@ -58,6 +58,53 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---------- Background photo + outline text drift ----------
+     As the user scrolls down, the background photo and the giant
+     outline words move horizontally — left-to-right, then
+     right-to-left, alternating — driven by scroll progress.
+     Photo and text move in opposite directions at different speeds
+     (parallax), and the photo also turns / scales a tiny amount.
+     Uses a sine wave over scroll progress so the direction reverses
+     smoothly, plus a slow continuous drift. Smoothed with lerp in
+     requestAnimationFrame. Runs on index.html (which has the layer);
+     harmless on projects.html (no .bg-layer there).
+     Canvas frame-scrubbing below is untouched. */
+  var bgPhoto = document.getElementById("bg-photo");
+  var bgTexts = Array.prototype.slice.call(document.querySelectorAll(".bg-text"));
+  if (!reduceMotion && (bgPhoto || bgTexts.length)) {
+    var bgTarget = 0, bgCurrent = 0, bgStart = performance.now();
+    function bgScrollProgress() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      if (max <= 0) return 0;
+      return Math.min(1, Math.max(0, window.scrollY / max));
+    }
+    function bgTick(now) {
+      var p = bgScrollProgress();
+      // Two full left->right->left cycles over the whole page:
+      // sin goes +1 -> 0 -> -1 -> 0 -> +1 as p goes 0 -> 1.
+      var wave = Math.sin(p * Math.PI * 4);
+      bgTarget = wave;
+      bgCurrent += (bgTarget - bgCurrent) * 0.08;
+      var t = (now - bgStart) / 1000;
+      var drift = Math.sin(t * 0.25) * 6; // slow continuous drift, px
+      if (bgPhoto) {
+        var px = bgCurrent * 48 + drift;
+        var rot = bgCurrent * 1.5; // subtle cinematic turn, degrees
+        var scale = 1.03 + Math.abs(bgCurrent) * 0.02;
+        bgPhoto.style.transform =
+          "translateY(-50%) translateX(" + px.toFixed(1) + "px) rotate(" + rot.toFixed(2) + "deg) scale(" + scale.toFixed(3) + ")";
+      }
+      bgTexts.forEach(function (el, i) {
+        // Opposite direction to the photo, different speed per line.
+        var speed = parseFloat(el.getAttribute("data-speed") || "0.6", 10);
+        var tx = -bgCurrent * 70 * speed + drift * speed * 0.5;
+        el.style.transform = "translateX(" + tx.toFixed(1) + "px)";
+      });
+      requestAnimationFrame(bgTick);
+    }
+    requestAnimationFrame(bgTick);
+  }
+
   /* ---------- Scroll canvas engine (index.html only) ---------- */
   var canvas = document.getElementById("scroll-canvas");
   if (!canvas) return; // projects.html: no canvas, the rest above is enough.

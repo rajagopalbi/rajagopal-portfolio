@@ -13,6 +13,16 @@
 <body>
   <!-- Scroll-driven image sequence, fixed behind all content -->
   <canvas id="scroll-canvas" aria-hidden="true"></canvas>
+
+  <!-- Background photo + giant outline text, behind the foreground
+       content (above the canvas, below the vignette/text). The photo
+       and text drift left-to-right, then right-to-left, as you scroll. -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-photo" id="bg-photo"><img src="photo.jpg" alt=""></div>
+    <div class="bg-text bg-text-1" data-speed="0.6">RAJAGOPAL</div>
+    <div class="bg-text bg-text-2" data-speed="-0.9">DATA ENGINEER</div>
+    <div class="bg-text bg-text-3" data-speed="0.45">POWER&nbsp;BI</div>
+  </div>
   <div class="vignette" aria-hidden="true"></div>
 
   <!-- Minimal loading indicator until initial frames are ready (or fallback confirmed) -->
