@@ -58,21 +58,29 @@
     revealEls.forEach(function (el) { el.classList.add("in"); });
   }
 
-  /* ---------- Background photo + outline text drift ----------
-     As the user scrolls down, the background photo and the giant
-     outline words move horizontally — left-to-right, then
-     right-to-left, alternating — driven by scroll progress.
-     Photo and text move in opposite directions at different speeds
-     (parallax), and the photo also turns / scales a tiny amount.
-     Uses a sine wave over scroll progress so the direction reverses
-     smoothly, plus a slow continuous drift. Smoothed with lerp in
-     requestAnimationFrame. Runs on index.html (which has the layer);
-     harmless on projects.html (no .bg-layer there).
-     Canvas frame-scrubbing below is untouched. */
+  /* ---------- Background photo turn + outline text drift ----------
+     SINGLE photo on the page (the centred background photo). It
+     turns from left to straight as you scroll:
+       scroll 0%   -> turned to the left (rotateY -18deg, shifted
+                      left, slightly smaller)
+       scroll ~60% -> straight facing forward (rotateY 0deg,
+                      centred, full scale), and it stays straight
+                      for the rest of the page.
+     On load it also turns in: it starts a further -14deg to the
+     left and eases toward its scroll-driven angle over ~1.4s.
+     The giant outline words keep drifting left-to-right / right-
+     to-left in the opposite direction (parallax). ALL of the
+     photo's motion is in ONE combined transform below — the
+     left-right drift, the turn, and the scale — so nothing
+     conflicts. Skipped under prefers-reduced-motion: the photo
+     stays straight and centred (its CSS default).
+     Runs on index.html (which has the layer); harmless on
+     projects.html (no .bg-layer there). Canvas frame-scrubbing
+     below is untouched. */
   var bgPhoto = document.getElementById("bg-photo");
   var bgTexts = Array.prototype.slice.call(document.querySelectorAll(".bg-text"));
   if (!reduceMotion && (bgPhoto || bgTexts.length)) {
-    var bgTarget = 0, bgCurrent = 0, bgStart = performance.now();
+    var bgTarget = 0, bgCurrent = 0, turnCurrent = 0, bgStart = performance.now();
     function bgScrollProgress() {
       var max = document.documentElement.scrollHeight - window.innerHeight;
       if (max <= 0) return 0;
@@ -80,6 +88,10 @@
     }
     function bgTick(now) {
       var p = bgScrollProgress();
+      // Turn progress: 0 at the top, 1 once scroll reaches 60%.
+      var q = Math.min(1, p / 0.6);
+      q = q * q * (3 - 2 * q); // smoothstep
+      turnCurrent += (q - turnCurrent) * 0.08;
       // Two full left->right->left cycles over the whole page:
       // sin goes +1 -> 0 -> -1 -> 0 -> +1 as p goes 0 -> 1.
       var wave = Math.sin(p * Math.PI * 4);
@@ -87,12 +99,21 @@
       bgCurrent += (bgTarget - bgCurrent) * 0.08;
       var t = (now - bgStart) / 1000;
       var drift = Math.sin(t * 0.25) * 6; // slow continuous drift, px
+      // Entrance: extra -14deg turn to the left, easing out over 1.4s.
+      var entranceT = Math.min(1, (now - bgStart) / 1400);
+      var entranceEase = 1 - Math.pow(1 - entranceT, 3);
+      var extraLeft = (1 - entranceEase) * -14;
       if (bgPhoto) {
-        var px = bgCurrent * 48 + drift;
-        var rot = bgCurrent * 1.5; // subtle cinematic turn, degrees
-        var scale = 1.03 + Math.abs(bgCurrent) * 0.02;
+        // Turn: -18deg (left) at the top -> 0deg (straight) at 60% scroll.
+        var turnDeg = -18 * (1 - turnCurrent) + extraLeft;
+        // Shift: -60px left at the top -> 0 (centred) when straight.
+        var shiftX = -60 * (1 - turnCurrent);
+        // One combined transform: centre, drift, turn, tilt, scale.
+        var px = bgCurrent * 48 + drift + shiftX;
+        var rot = bgCurrent * 1.5; // subtle in-plane tilt, degrees
+        var scale = 0.94 + 0.06 * turnCurrent;
         bgPhoto.style.transform =
-          "translateY(-50%) translateX(" + px.toFixed(1) + "px) rotate(" + rot.toFixed(2) + "deg) scale(" + scale.toFixed(3) + ")";
+          "translate(-50%, -50%) translateX(" + px.toFixed(1) + "px) rotateY(" + turnDeg.toFixed(2) + "deg) rotate(" + rot.toFixed(2) + "deg) scale(" + scale.toFixed(3) + ")";
       }
       bgTexts.forEach(function (el, i) {
         // Opposite direction to the photo, different speed per line.
@@ -103,27 +124,6 @@
       requestAnimationFrame(bgTick);
     }
     requestAnimationFrame(bgTick);
-  }
-
-
-  /* ---------- Folioblox hero portrait parallax ----------
-     The central portrait drifts down slightly and scales a touch
-     as you scroll, for a cinematic turn. Kept subtle; skipped
-     under prefers-reduced-motion. */
-  var folioPortrait = document.getElementById("folio-portrait");
-  if (folioPortrait && !reduceMotion) {
-    var folioTicking = false;
-    function folioParallax() {
-      folioTicking = false;
-      var y = window.scrollY;
-      if (y < window.innerHeight * 1.2) {
-        folioPortrait.style.transform =
-          "translateX(-50%) translateY(" + (y * 0.12).toFixed(1) + "px) scale(" + (1 + Math.min(y / window.innerHeight, 1) * 0.05).toFixed(3) + ")";
-      }
-    }
-    window.addEventListener("scroll", function () {
-      if (!folioTicking) { folioTicking = true; requestAnimationFrame(folioParallax); }
-    }, { passive: true });
   }
 
   /* ---------- Scroll canvas engine (index.html only) ---------- */

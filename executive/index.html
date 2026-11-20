@@ -15,8 +15,12 @@
   <canvas id="scroll-canvas" aria-hidden="true"></canvas>
 
   <!-- Background photo + giant outline text, behind the foreground
-       content (above the canvas, below the vignette/text). The photo
-       and text drift left-to-right, then right-to-left, as you scroll. -->
+       content (above the canvas, below the vignette/text). This is
+       the ONLY photo on the page: the background photo, centred in
+       the middle of the hero, darkened so white text stays readable.
+       The giant outline words sit behind it and never cover his face.
+       As you scroll, the photo turns from left to straight (see
+       script.js) and the words drift the opposite way. -->
   <div class="bg-layer" aria-hidden="true">
     <div class="bg-photo" id="bg-photo"><img src="photo.jpg" alt=""></div>
     <div class="bg-text bg-text-1" data-speed="0.6">RAJAGOPAL</div>
@@ -49,13 +53,9 @@
     </header>
 
     <main>
-      <!-- 1. Hero — Folioblox style: large central portrait, huge
-           headline overlapping the photo, red-to-violet lighting. -->
+      <!-- 1. Hero — Folioblox style: huge headline over the single
+           centred background photo (no separate main/hero photo). -->
       <section class="hero folio-hero" id="home">
-        <div class="folio-bg" aria-hidden="true">
-          <img class="folio-portrait" id="folio-portrait" src="photo.jpg" alt="">
-          <div class="folio-grad"></div>
-        </div>
         <div class="container folio-content">
           <div class="folio-top">
             <div class="folio-left">
